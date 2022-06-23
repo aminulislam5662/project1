@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="/static/productgrid.css">
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <div class="container-prod">
+            <div class="main-title">
+                <h1>Product List</h1>
+
+            </div>
+            <div class="display-style-btns">
+                <button type="button" id="grid-active-btn">
+                    <i class="fas fa-th"></i>
+                </button>
+                <button type="button" id="details-active-btn">
+                    <i class="fas fa-list-ul"></i>
+                </button>
+            </div>
+            
+            <div class="item-list">
+                {% for n in db_data %}
+                <div class="item">
+                    <div class="item-img">
+                        <img src="../{{n.image}}" alt="">
+                        <div class="icon-list">
+                            <button type="button">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                            <button type="button">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                            <button type="button">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="item-detail">
+                        <a href="#" class="item-name">{{n.title}}</a>
+                        <div class="item-price">
+                            <span class="new-price">${{n.newprice}}</span>
+                            <span class="old-price">${{n.oldprice}}</span>
+                        </div>
+                        <p>{{n.description | safe}}</p>
+                        <button type="button" class="add-btn">Add to Cart</button>
+                    </div>
+                    
+                </div>
+
+                {%endfor%}
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+    
+</body>
+</html>
